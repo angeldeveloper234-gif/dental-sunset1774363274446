@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Menu, X, HeartPulse } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,7 @@ export function Navbar() {
 
     const links = [
         { href: "/", label: "Inicio" },
-        { href: "/about", label: "Nosotros" },
+        { href: "/about", label: "Filosofía" },
         { href: "/services", label: "Tratamientos" },
         { href: "/contact", label: "Contacto" },
     ];
@@ -27,70 +27,65 @@ export function Navbar() {
     const isActive = (path: string) => location.pathname === path;
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-2" : "bg-transparent py-4"}`}>
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-white/90 backdrop-blur-xl border-b border-navy/5 py-4" : "bg-transparent py-6"}`}>
             <div className="container mx-auto px-6 flex items-center justify-between">
-                <Link to="/" className="flex items-center gap-2">
-                    <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20">
-                        <HeartPulse size={24} className="text-white" />
-                    </div>
-                    <div>
-                        <span className="text-xl font-display font-bold text-primary leading-none block">
-                            {branding.name}
-                        </span>
-                        <span className="text-[10px] text-gray-500 font-sans tracking-wider uppercase">
-                            {branding.trade}
-                        </span>
-                    </div>
+                <Link to="/" className="flex flex-col">
+                    <span className="text-2xl font-serif font-bold text-navy tracking-tight block">
+                        {branding.name}
+                    </span>
+                    <span className="text-[9px] text-dark/50 font-bold tracking-[0.2em] uppercase">
+                        Dental Excellence
+                    </span>
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden md:flex items-center gap-10">
                     {links.map((link) => (
                         <Link
                             key={link.href}
                             to={link.href}
-                            className={`text-sm font-sans font-medium transition-colors ${isActive(link.href) ? "text-primary" : "text-gray-500 hover:text-primary"}`}
+                            className={`text-[11px] font-sans font-bold uppercase tracking-widest transition-colors ${isActive(link.href) ? "text-navy" : "text-dark/60 hover:text-navy"}`}
                         >
                             {link.label}
                         </Link>
                     ))}
                     <Link to="/contact">
-                        <Button size="sm" className="rounded-full px-6">
-                            Agendar Cita
+                        <Button className="bg-navy text-white hover:bg-navy/90 rounded-full px-8 h-10 text-[11px] font-bold uppercase tracking-wider transition-all hover:scale-105">
+                            Agendar
                         </Button>
                     </Link>
                 </div>
 
                 {/* Mobile Menu Toggle */}
                 <button
-                    className="md:hidden text-gray-700"
+                    className="md:hidden text-navy"
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    {isOpen ? <X /> : <Menu />}
+                    {isOpen ? <X strokeWidth={1.5} /> : <Menu strokeWidth={1.5} />}
                 </button>
             </div>
 
             {/* Mobile Menu */}
             {isOpen && (
                 <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="md:hidden bg-white border-t border-gray-100 shadow-xl"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-navy/5 shadow-2xl"
                 >
-                    <div className="flex flex-col p-6 gap-4">
+                    <div className="flex flex-col p-8 gap-6">
                         {links.map((link) => (
                             <Link
                                 key={link.href}
                                 to={link.href}
-                                className={`text-base font-medium py-2 ${isActive(link.href) ? "text-primary" : "text-gray-600"}`}
+                                className={`text-sm font-sans font-bold uppercase tracking-widest ${isActive(link.href) ? "text-navy" : "text-dark/70"}`}
                                 onClick={() => setIsOpen(false)}
                             >
                                 {link.label}
                             </Link>
                         ))}
                         <Link to="/contact" onClick={() => setIsOpen(false)}>
-                            <Button className="w-full mt-4">
+                            <Button className="w-full mt-4 bg-navy text-white h-12 rounded-full uppercase tracking-widest text-xs font-bold">
                                 Agendar Cita
                             </Button>
                         </Link>

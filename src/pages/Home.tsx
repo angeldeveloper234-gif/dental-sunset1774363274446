@@ -18,6 +18,7 @@ export function Home() {
             <Roadmap />
             <Testimonials />
             <CTA />
+            <FAQ />
             <Contact />
             <CustomCursor />
         </main>

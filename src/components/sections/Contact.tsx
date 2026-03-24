@@ -7,71 +7,76 @@ export function Contact() {
     const { dynamicContent, demoUser } = config;
 
     return (
-        <section id="contact" className="py-24 bg-surface">
+        <section id="contact" className="py-24 md:py-32 bg-ivory">
             <div className="container mx-auto px-6">
-                <div className="grid lg:grid-cols-2 gap-16">
+                <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                     <div>
-                        <span className="text-secondary font-bold tracking-widest uppercase text-sm">Contacto</span>
-                        <h2 className="text-4xl font-display font-bold text-gray-900 mt-2 mb-8">
-                            VISÍTANOS EN <span className="text-primary">CABO</span>
+                        <span className="text-peach font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Contacto</span>
+                        <h2 className="text-4xl md:text-5xl font-serif text-navy leading-tight mb-8 uppercase tracking-tight">
+                            VISÍTANOS EN <br/> <span className="italic text-navy/70 normal-case">{dynamicContent.city.toUpperCase()}</span>
                         </h2>
-                        <p className="text-gray-600 mb-10">
-                            Estamos ubicados estratégicamente en Plaza GARA. Estacionamiento disponible y acceso para sillas de ruedas.
+                        <p className="text-dark/60 mb-12 font-sans leading-relaxed max-w-md">
+                            Estamos ubicados estratégicamente para tu comodidad. Estacionamiento privado y acceso universal en todas nuestras instalaciones.
                         </p>
 
-                        <div className="space-y-6">
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-primary shrink-0">
-                                    <MapPin size={20} />
+                        <div className="space-y-8">
+                            {[
+                                {
+                                    icon: MapPin,
+                                    title: "Dirección",
+                                    desc: "Calle Kukulkán plaza GARA local 1, Cabo San Lucas, 23472"
+                                },
+                                {
+                                    icon: Phone,
+                                    title: "Teléfono / WhatsApp",
+                                    desc: demoUser.whatsapp
+                                },
+                                {
+                                    icon: Clock,
+                                    title: "Horario de Atención",
+                                    desc: "Lun - Vie: 9:00 AM - 7:00 PM",
+                                    desc2: "Sáb: 9:00 AM - 2:00 PM"
+                                }
+                            ].map((item, idx) => (
+                                <div key={idx} className="flex items-start gap-5 group">
+                                    <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-navy shrink-0 group-hover:bg-navy group-hover:text-ivory transition-all duration-500 shadow-xl shadow-navy/5 border border-navy/5">
+                                        <item.icon size={22} />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-navy mb-1 font-sans text-sm uppercase tracking-wider">{item.title}</h4>
+                                        <p className="text-dark/70 text-sm leading-relaxed">{item.desc}</p>
+                                        {item.desc2 && <p className="text-dark/70 text-sm leading-relaxed">{item.desc2}</p>}
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 className="font-bold text-gray-900">Dirección</h4>
-                                    <p className="text-gray-600">Calle Kukulkán plaza GARA local 1, Cabo San Lucas, 23472</p>
-                                </div>
-                            </div>
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-primary shrink-0">
-                                    <Phone size={20} />
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-gray-900">Teléfono / WhatsApp</h4>
-                                    <p className="text-gray-600">{demoUser.whatsapp}</p>
-                                </div>
-                            </div>
-                            <div className="flex items-start gap-4">
-                                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-primary shrink-0">
-                                    <Clock size={20} />
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-gray-900">Horario</h4>
-                                    <p className="text-gray-600">Lun - Vie: 9:00 AM - 7:00 PM</p>
-                                    <p className="text-gray-600">Sáb: 9:00 AM - 2:00 PM</p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
 
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="bg-white p-8 md:p-10 rounded-3xl shadow-xl shadow-blue-900/5 border border-gray-100"
+                        viewport={{ once: true }}
+                        className="bg-white p-10 md:p-14 rounded-[3rem] shadow-2xl shadow-navy/5 border border-white/50 relative"
                     >
-                        <h3 className="text-2xl font-bold text-gray-900 mb-6">Solicita tu Valoración</h3>
-                        <form className="space-y-4">
-                            <div className="grid grid-cols-2 gap-4">
-                                <input type="text" placeholder="Nombre" className="w-full px-4 py-3 rounded-xl bg-gray-50 border-transparent focus:bg-white focus:border-primary focus:ring-0 transition-colors" />
-                                <input type="text" placeholder="Apellido" className="w-full px-4 py-3 rounded-xl bg-gray-50 border-transparent focus:bg-white focus:border-primary focus:ring-0 transition-colors" />
+                        {/* Decorative background circle */}
+                        <div className="absolute top-[-20px] right-[-20px] w-20 h-20 bg-peach/20 rounded-full blur-2xl -z-10" />
+
+                        <h3 className="text-2xl font-serif text-navy mb-8 italic">Solicita tu Valoración Digital</h3>
+                        <form className="space-y-5">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <input type="text" placeholder="Nombre" className="w-full px-6 py-4 rounded-2xl bg-ivory/30 border border-navy/5 focus:bg-white focus:border-peach focus:ring-0 transition-all text-dark placeholder:text-dark/30 text-sm font-medium" />
+                                <input type="text" placeholder="Apellido" className="w-full px-6 py-4 rounded-2xl bg-ivory/30 border border-navy/5 focus:bg-white focus:border-peach focus:ring-0 transition-all text-dark placeholder:text-dark/30 text-sm font-medium" />
                             </div>
-                            <input type="tel" placeholder="Teléfono" className="w-full px-4 py-3 rounded-xl bg-gray-50 border-transparent focus:bg-white focus:border-primary focus:ring-0 transition-colors" />
-                            <select className="w-full px-4 py-3 rounded-xl bg-gray-50 border-transparent focus:bg-white focus:border-primary focus:ring-0 transition-colors text-gray-500">
+                            <input type="tel" placeholder="Teléfono" className="w-full px-6 py-4 rounded-2xl bg-ivory/30 border border-navy/5 focus:bg-white focus:border-peach focus:ring-0 transition-all text-dark placeholder:text-dark/30 text-sm font-medium" />
+                            <select className="w-full px-6 py-4 rounded-2xl bg-ivory/30 border border-navy/5 focus:bg-white focus:border-peach focus:ring-0 transition-all text-dark/50 text-sm font-medium appearance-none">
                                 <option>Interés del Tratamiento</option>
                                 <option>Diseño de Sonrisa</option>
-                                <option>Ortodoncia</option>
-                                <option>Implantes</option>
+                                <option>Ortodoncia Invisible</option>
+                                <option>Implantes Dentales</option>
                                 <option>Limpieza / General</option>
                             </select>
-                            <textarea rows={4} placeholder="¿Cómo podemos ayudarte?" className="w-full px-4 py-3 rounded-xl bg-gray-50 border-transparent focus:bg-white focus:border-primary focus:ring-0 transition-colors"></textarea>
-                            <Button className="w-full text-lg shadow-xl shadow-primary/20">
+                            <textarea rows={4} placeholder="¿Cómo podemos ayudarte?" className="w-full px-6 py-4 rounded-2xl bg-ivory/30 border border-navy/5 focus:bg-white focus:border-peach focus:ring-0 transition-all text-dark placeholder:text-dark/30 text-sm font-medium"></textarea>
+                            <Button className="w-full h-16 bg-navy text-ivory hover:bg-navy/90 rounded-full text-sm font-bold uppercase tracking-widest shadow-xl shadow-navy/20 transition-all hover:scale-[1.02]">
                                 Enviar Mensaje
                             </Button>
                         </form>

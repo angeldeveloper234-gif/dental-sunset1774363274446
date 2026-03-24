@@ -8,27 +8,32 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                background: "#FFFFFF",
-                foreground: "#1F2937", // Gray-800
+                background: "#EFF8FF", // Light Blue Base
+                foreground: "#121212", // Dark Body Text (per request)
+                navy: "#0060C9",       // Important elements / Primary Blue
+                ivory: "#EFF8FF",      // Background (60%)
+                peach: "#FAC927",      // Accent Gold (5%)
+                softblue: "#DAEDFB",   // Secondary Blue (30%)
+                white: "#FFFFFF",      // Pure White for clear elements
                 primary: {
-                    DEFAULT: "#0056B3", // Medical Blue
-                    foreground: "#FFFFFF",
+                    DEFAULT: "#0060C9",
+                    foreground: "#EFF8FF",
                 },
                 secondary: {
-                    DEFAULT: "#28A745", // Soft Green
-                    foreground: "#FFFFFF",
+                    DEFAULT: "#DAEDFB",
+                    foreground: "#0060C9",
                 },
-                surface: "#F8FAFC", // Slate-50
-                border: "#E2E8F0", // Slate-200
+                accent: "#FAC927",
+                dark: "#121212",       // Specific dark color for body text
             },
             fontFamily: {
-                sans: ["Nunito", "sans-serif"],
-                display: ["Poppins", "sans-serif"],
+                sans: ["Inter", "sans-serif"],
+                serif: ["Playfair Display", "serif"],
             },
             borderRadius: {
-                'xl': '1rem',
-                '2xl': '1.5rem',
-                '3xl': '2rem',
+                'xl': '1.5rem',
+                '2xl': '2.5rem',
+                '3xl': '4rem',
             }
         },
     },

@@ -9,7 +9,6 @@ import { UserProvider } from "@/context/UserContext";
 import { Navbar } from "@/components/sections/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { WhatsAppWidget } from "@/components/ui/WhatsAppWidget";
-import { StickyCallBar } from "@/components/StickyCallBar";
 
 function App() {
     return (
@@ -26,7 +25,6 @@ function App() {
                     </Routes>
                     <Footer />
                     <WhatsAppWidget />
-                    <StickyCallBar />
                 </div>
             </Router>
         </UserProvider>
