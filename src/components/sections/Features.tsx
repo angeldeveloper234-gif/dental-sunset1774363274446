@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { config } from "@/config";
 import { ArrowRight } from "lucide-react";
+import { BrandSparkles } from "@/components/ui/BrandSparkles";
 
 const serviceImages = [
     "/images-media/Dentista examinando los dientes del paciente femenino.jpg",
@@ -13,67 +14,64 @@ export function Features() {
     const { services } = config;
 
     return (
-        <section className="py-32 bg-ivory">
+        <section id="tratamientos" className="relative bg-white py-20 md:py-24">
+            <BrandSparkles className="absolute right-[6%] top-20 hidden h-24 w-24 rotate-12 text-primary/10 md:block" />
             <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-20">
-                    <div className="max-w-xl">
-                        <span className="text-peach font-bold tracking-[0.2em] uppercase text-xs mb-4 block">
-                            Nuestros Tratamientos
+                <div className="mb-10 max-w-3xl md:mb-14">
+                    <div className="mb-4 flex items-center gap-3">
+                        <span className="h-[2px] w-8 rounded-full bg-primary" />
+                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">
+                            Nuestros tratamientos
                         </span>
-                        <h2 className="text-4xl md:text-5xl font-serif text-navy leading-tight">
-                            Exelencia en odontología <br className="hidden md:block"/> 
-                            <span className="italic text-navy/70">con un toque humano.</span>
-                        </h2>
                     </div>
-                    <div className="mt-8 md:mt-0">
-                        <p className="text-dark/60 font-sans max-w-sm text-sm">
-                            Descubre opiniones de pacientes encantados y conoce los tratamientos especializados de primer nivel.
-                        </p>
-                    </div>
+                    <h2 className="font-serif text-4xl leading-[1.08] tracking-[-0.035em] text-navy md:text-5xl">
+                        Excelencia en odontología <span className="italic text-primary">con un toque humano.</span>
+                    </h2>
+                    <p className="mt-4 max-w-xl text-sm leading-6 text-slate-600 sm:text-base">
+                        Conoce los tratamientos de Dental Sunset y encuentra el punto de partida para tu atención.
+                    </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                {/* “1.jpg” inspira el espacio y el ritmo de las tarjetas; la referencia azul inspira las imágenes y los controles azules independientes debajo de cada foto. */}
+                <div className="grid grid-cols-1 gap-x-5 gap-y-11 pt-6 sm:grid-cols-2 xl:grid-cols-4">
                     {services.map((service, index) => (
-                        <motion.div
+                        <motion.article
                             key={service.id}
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 1, y: 18 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className="group relative h-[450px] w-full  rounded-[2rem] overflow-hidden cursor-pointer bg-navy"
+                            viewport={{ once: true, margin: "-64px" }}
+                            transition={{ duration: 0.4, delay: index * 0.06 }}
+                            className="group relative z-0 mt-0 flex h-full flex-col rounded-[1.5rem] border border-[#DCE7F2] bg-white shadow-[0_8px_24px_rgba(18,63,120,0.06)] transition-shadow duration-300 hover:z-20 hover:shadow-[0_16px_36px_rgba(18,63,120,0.12)]"
                         >
-                            {/* Background Image */}
-                            <img
-                                src={serviceImages[index]}
-                                alt={service.title}
-                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-110 opacity-60 group-hover:opacity-40"
-                            />
-                            
-                            {/* Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent transition-opacity duration-500 opacity-90 group-hover:opacity-100" />
-
-                            {/* Content */}
-                            <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                                <div className="transform transition-transform duration-500 group-hover:-translate-y-8">
-                                    <div className="w-14 h-14 rounded-2xl border border-ivory/20 flex items-center justify-center text-3xl mb-8 bg-navy/30 backdrop-blur-md transition-all duration-700 group-hover:bg-peach group-hover:text-navy group-hover:scale-110 group-hover:rotate-6">
-                                        {service.icon}
-                                    </div>
-                                    <h3 className="text-2xl font-serif text-ivory mb-3 leading-tight">
-                                        {service.title}
-                                    </h3>
-                                    <p className="text-ivory/50 text-sm font-sans leading-relaxed line-clamp-2 transition-opacity group-hover:opacity-100">
-                                        {service.solve}
-                                    </p>
+                            <div className="relative z-0 aspect-[1.35/1] min-h-0 w-full shrink-0 rounded-t-[1.5rem] bg-[#EAF2FA]">
+                                <div className="absolute inset-0 overflow-hidden rounded-t-[1.5rem]">
+                                    <img
+                                        src={serviceImages[index] ?? serviceImages[0]}
+                                        alt={service.title}
+                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                                    />
                                 </div>
-
-                                {/* Hover Button */}
-                                <div className="absolute bottom-8 left-8 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 delay-100">
-                                    <button className="flex items-center gap-3 bg-peach text-navy px-7 py-3 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-xl shadow-peach/20 hover:scale-105 transition-transform">
-                                        Saber más <ArrowRight className="w-4 h-4" />
-                                    </button>
+                                <div className="absolute -bottom-6 left-6 z-30 flex h-12 w-12 items-center justify-center rounded-full border-[3px] border-white bg-[#286CFD] text-2xl leading-none text-white shadow-[0_8px_18px_rgba(40,108,253,0.3)] ring-1 ring-[#286CFD]/20">
+                                    <span aria-hidden="true">{service.icon}</span>
                                 </div>
                             </div>
-                        </motion.div>
+
+                            <div className="relative z-10 flex flex-1 flex-col px-5 pb-6 pt-12 sm:px-6 sm:pt-12">
+                                <h3 className="mb-2 font-serif text-xl font-bold leading-tight text-navy">
+                                    {service.title}
+                                </h3>
+                                <p className="flex-1 text-sm leading-6 text-slate-600">
+                                    {service.solve}
+                                </p>
+                                <a
+                                    href="/services"
+                                    className="relative z-20 mt-5 inline-flex min-h-10 w-fit items-center gap-2 rounded-full border border-[#B8D0EA] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-primary transition-colors hover:border-primary hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                                    aria-label={`Saber más sobre ${service.title}`}
+                                >
+                                    Saber más <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                                </a>
+                            </div>
+                        </motion.article>
                     ))}
                 </div>
             </div>

@@ -27,9 +27,11 @@ export function Footer() {
                         <h4 className="font-bold mb-6 font-sans text-xs uppercase tracking-widest text-peach">Enlaces Rápidos</h4>
                         <ul className="space-y-4 text-dark/70 font-sans text-sm">
                             <li><a href="/" className="hover:text-navy transition-colors">Inicio</a></li>
-                            <li><a href="/about" className="hover:text-navy transition-colors">Filosofía</a></li>
+                            <li><a href="/about" className="hover:text-primary transition-colors">Sobre nosotros</a></li>
                             <li><a href="/services" className="hover:text-navy transition-colors">Tratamientos</a></li>
-                            <li><a href="/contact" className="hover:text-navy transition-colors">Contacto</a></li>
+                            <li><a href="/contact" className="hover:text-primary transition-colors">Contacto</a></li>
+                            <li><a href="/#ubicacion" className="hover:text-primary transition-colors">Ubicación</a></li>
+                            <li><a href="/#faq" className="hover:text-primary transition-colors">Preguntas frecuentes</a></li>
                         </ul>
                     </div>
 

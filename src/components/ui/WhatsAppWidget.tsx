@@ -1,80 +1,53 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle } from "lucide-react";
-import { useState, useEffect } from "react";
+"use client";
+
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { config } from "@/config";
 
 export function WhatsAppWidget() {
-    const [showNotification, setShowNotification] = useState(false);
-    const [messageIndex, setMessageIndex] = useState(0);
-    const { demoUser } = config;
-
-    const dentalMessages = [
-        "¿Buscas mejorar tu sonrisa?",
-        "¡Agenda tu valoración hoy!",
-        "¿Necesitas limpieza dental?",
-        "Expertos en estética dental",
-        "¿Tienes molestias dentales?"
-    ];
+    const [busySectionVisible, setBusySectionVisible] = useState(false);
 
     useEffect(() => {
-        // Pick a random message index on load
-        setMessageIndex(Math.floor(Math.random() * dentalMessages.length));
-        
-        const timer = setTimeout(() => {
-            setShowNotification(true);
-        }, 3000);
-        return () => clearTimeout(timer);
+        const sections = document.querySelectorAll("#inicio, #datos-destacados, #tratamientos, #contact");
+        if (!sections.length) return;
+
+        const updateVisibility = () => {
+            const viewportHeight = window.innerHeight;
+            setBusySectionVisible(Array.from(sections).some((section) => {
+                const rect = section.getBoundingClientRect();
+                return rect.top < viewportHeight && rect.bottom > 0;
+            }));
+        };
+        updateVisibility();
+        window.addEventListener("scroll", updateVisibility, { passive: true });
+        window.addEventListener("resize", updateVisibility);
+        return () => {
+            window.removeEventListener("scroll", updateVisibility);
+            window.removeEventListener("resize", updateVisibility);
+        };
     }, []);
 
     const handleClick = () => {
         const message = encodeURIComponent("¡Hola Dental Sunset! Me gustaría agendar una valoración dental.");
-        const whatsappUrl = `https://wa.me/${demoUser.whatsapp.replace(/\+/g, '')}?text=${message}`;
-        window.open(whatsappUrl, "_blank");
-        setShowNotification(false);
+        const whatsappUrl = `https://wa.me/${config.demoUser.whatsapp.replace(/\+/g, "")}?text=${message}`;
+        window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     };
 
+    if (busySectionVisible) return null;
+
     return (
-        <div className="fixed bottom-6 right-6 z-50">
-            <motion.button
-                onClick={handleClick}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="relative flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-[#25D366]/20 transition-shadow overflow-visible font-sans"
-                aria-label="Contactar por WhatsApp"
-            >
-                <MessageCircle size={30} fill="currentColor" />
-                
-                <AnimatePresence>
-                    {showNotification && (
-                        <motion.div
-                            initial={{ scale: 0, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0, opacity: 0 }}
-                            className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 border-2 border-navy rounded-full flex items-center justify-center pointer-events-none"
-                        >
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-                            </span>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </motion.button>
-            
-            <AnimatePresence>
-                {showNotification && (
-                    <motion.div
-                        initial={{ x: 20, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: 20, opacity: 0 }}
-                        className="absolute right-full mr-4 bottom-2 bg-navy text-white px-5 py-3 rounded-2xl shadow-2xl border border-white/10 whitespace-nowrap hidden sm:block pointer-events-none font-sans"
-                    >
-                        <p className="text-sm font-bold tracking-tight">{dentalMessages[messageIndex]}</p>
-                        <p className="text-[10px] text-white/50 uppercase tracking-widest mt-1">Chat directo con expertos</p>
-                        <div className="absolute right-[-6px] top-1/2 -translate-y-1/2 w-3 h-3 bg-navy rotate-45 border-r border-t border-white/10" />
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
+        <motion.button
+            type="button"
+            onClick={handleClick}
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.96 }}
+            className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_rgba(0,0,0,0.18)] ring-4 ring-white transition-shadow hover:shadow-[0_10px_28px_rgba(37,211,102,0.35)] md:bottom-7 md:right-7"
+            aria-label="Contactar por WhatsApp"
+            title="Escríbenos por WhatsApp"
+        >
+            <svg aria-hidden="true" viewBox="0 0 448 512" className="h-7 w-7 fill-current">
+                <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32 101.5 32 2 131.5 2 253.9c0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.8 27 106.1 27h.1c122.3 0 224.1-99.5 224.1-221.9 0-59.3-25.1-115.1-67.1-157.1zM223.9 438.7c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.4-28.2-98.3 0-101.8 82.8-184.6 184.7-184.6 49.3 0 95.6 19.2 130.4 54.1 34.8 34.8 56.2 81.1 56.1 130.4 0 101.8-85 184.9-186.7 184.9zm101.2-138.2c-5.5-2.7-32.8-16.2-37.9-18.1-5.1-1.9-8.8-2.7-12.5 2.7-3.7 5.5-14.3 18.1-17.6 21.8-3.2 3.7-6.5 4.1-12 1.4-32.6-16.3-54-29.1-75.5-65.9-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.6-1.4-2.7-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2s-9.6 1.4-14.7 6.9c-5.1 5.5-19.3 18.9-19.3 46.2s19.8 53.6 22.5 57.3c2.7 3.7 39 59.6 94.5 83.6 35.1 15.2 48.8 16.5 66.3 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.2-2.3-5-3.7-10.5-6.4z" />
+            </svg>
+        </motion.button>
     );
 }

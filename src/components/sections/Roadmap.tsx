@@ -1,47 +1,47 @@
-import { motion } from 'framer-motion';
-import { config } from '@/config';
+import { motion } from "framer-motion";
+import { config } from "@/config";
 
 export function Roadmap() {
     const { roadmap } = config.dynamicContent;
 
     return (
-        <section className="py-24 md:py-32 bg-ivory overflow-hidden">
+        <section id="proceso" className="scroll-mt-32 bg-softblue py-20 md:py-24">
             <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
-                    <div className="max-w-xl">
-                        <span className="text-peach font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Tu Experiencia</span>
-                        <h2 className="text-4xl md:text-5xl font-serif text-navy leading-tight">
-                            EL CAMINO HACIA TU <span className="italic text-navy/70">MEJOR SONRISA</span>
+                <div className="mb-10 grid gap-5 md:mb-14 md:grid-cols-[minmax(0,1fr)_20rem] md:items-end">
+                    <div className="max-w-2xl">
+                        <span className="mb-4 block text-xs font-bold uppercase tracking-[0.18em] text-primary">Tu experiencia</span>
+                        <h2 className="font-serif text-4xl leading-[1.08] text-navy md:text-5xl">
+                            El camino hacia tu <span className="italic text-primary">mejor sonrisa</span>
                         </h2>
                     </div>
-                    <p className="text-dark/60 max-w-sm font-sans text-sm leading-relaxed">
-                        Hemos optimizado cada paso para que tu visita sea relajante, eficiente y transparente desde el primer minuto.
+                    <p className="max-w-sm text-sm leading-6 text-slate-600">
+                        Contacta directamente a la clínica para consultar sobre un tratamiento y coordinar una visita.
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 relative">
-                    {/* Connecting Line (Desktop) */}
-                    <div className="hidden lg:block absolute top-[2.75rem] left-[4rem] right-[4rem] h-[1px] bg-navy/5 -z-10" />
-
-                    {roadmap.map((item, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
+                    {roadmap.map((item: { step: string; title: string; desc: string }, index) => (
+                        <motion.article
+                            key={item.step}
+                            initial={{ opacity: 1, y: 18 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ delay: index * 0.15, duration: 0.6 }}
-                            className="relative group"
+                            viewport={{ once: true, margin: "-64px" }}
+                            transition={{ delay: index * 0.08, duration: 0.45 }}
+                            className="relative z-0 rounded-[1.5rem] border border-white/80 bg-white p-5 shadow-[0_8px_24px_rgba(18,63,120,0.06)] sm:p-7"
                         >
-                            <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-2xl font-serif italic font-bold text-navy mb-8 shadow-xl shadow-navy/5 border border-white/50 group-hover:bg-navy group-hover:text-ivory transition-all duration-500">
-                                {item.step}
+                            <div className="mb-6 flex items-center gap-3">
+                                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary font-serif text-lg font-bold text-white shadow-[0_8px_18px_rgba(18,98,184,0.22)]">
+                                    {item.step}
+                                </span>
+                                <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+                                    Paso {item.step}
+                                </span>
                             </div>
-                            <h3 className="text-xl font-bold text-navy mb-4 font-sans tracking-tight uppercase text-xs tracking-[0.1em]">
-                                Paso {item.step}: <span className="block text-xl font-serif italic normal-case tracking-normal mt-1 opacity-90">{item.title}</span>
+                            <h3 className="mb-3 font-serif text-2xl font-bold leading-tight text-navy">
+                                {item.title}
                             </h3>
-                            <p className="text-dark/60 text-sm leading-relaxed font-sans max-w-[85%]">
-                                {item.desc}
-                            </p>
-                        </motion.div>
+                            <p className="text-sm leading-6 text-slate-600">{item.desc}</p>
+                        </motion.article>
                     ))}
                 </div>
             </div>

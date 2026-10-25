@@ -1,158 +1,66 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Star, Clock, CheckCircle2, Play, Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, Play } from "lucide-react";
 import { config } from "@/config";
+import Link from "next/link";
+import { BrandSparkles } from "@/components/ui/BrandSparkles";
 
 export function Hero() {
     const { dynamicContent, branding } = config;
     const { city } = dynamicContent;
 
     return (
-        <section className="relative min-h-screen flex flex-col pt-24 overflow-hidden bg-white">
-            <div className="relative flex-grow flex flex-col justify-center w-full">
-                {/* Background Accents (Image-like curve) */}
-                <div className="absolute top-0 right-0 w-[45%] h-full bg-[#E5F3FF] rounded-l-[10rem] hidden lg:block z-0" />
-                
-                <div className="container mx-auto px-6 relative z-10 flex-grow flex items-center py-12 lg:py-0">
-                    <div className="w-full lg:w-[55%] xl:w-1/2">
-                        {/* Left Side: Copy */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="max-w-2xl py-10"
-                        >
-                            <motion.div 
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 0.2 }}
-                                className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-peach/30 mb-8 shadow-xl shadow-navy/5"
-                            >
-                                <span className="flex">
-                                    {[1, 2, 3, 4, 5].map((_, i) => (
-                                        <Star key={i} className="w-3 h-3 fill-peach text-peach" />
-                                    ))}
-                                </span>
-                                <span className="text-[10px] font-bold text-navy uppercase tracking-[0.2em]">
-                                    4.9/5 Google Reviews en {city}
-                                </span>
-                            </motion.div>
-
-                            <h1 className="text-5xl md:text-7xl lg:text-[5rem] font-serif text-navy leading-[1.05] mb-8 font-bold">
-                                La <span className="italic text-navy/80">sonrisa</span> que mereces, con la tranquilidad que buscas.
-                            </h1>
-
-                            <p className="text-xl text-dark/70 mb-10 leading-relaxed font-sans max-w-lg">
-                                Especialistas en odontología estética y avanzada. 
-                                Experimenta un cuidado dental de clase mundial con el Dr. Benito y el Dr. César en el corazón de {city}.
-                            </p>
-
-                            <div className="flex flex-col sm:flex-row items-center gap-8 mb-12">
-                                <Button 
-                                    size="lg" 
-                                    className="bg-navy text-white hover:bg-navy/90 h-16 px-10 rounded-full text-sm font-bold tracking-widest transition-all hover:scale-105 shadow-2xl shadow-navy/20 w-full sm:w-auto uppercase"
-                                >
-                                    AGENDAR CITA <ArrowRight className="ml-2 w-4 h-4" />
-                                </Button>
-                                
-                                {/* Play Video Style Element (from image) */}
-                                <button className="flex items-center gap-4 group">
-                                    <span className="w-14 h-14 rounded-full bg-navy text-white flex items-center justify-center transition-transform group-hover:scale-110 shadow-lg shadow-navy/20">
-                                        <Play size={20} fill="currentColor" />
-                                    </span>
-                                    <span className="text-sm font-bold text-navy uppercase tracking-widest border-b border-navy/20 pb-1">
-                                        Ver Casos
-                                    </span>
-                                </button>
-                            </div>
-
-                            {/* Social Proof (from original) */}
-                            <div className="flex items-center gap-4 py-6 border-t border-navy/5">
-                                <div className="flex -space-x-2">
-                                    {[
-                                        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&h=150&q=80",
-                                        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80",
-                                        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150&q=80"
-                                    ].map((url, i) => (
-                                        <img 
-                                            key={i} 
-                                            src={url} 
-                                            alt={`Paciente ${i + 1}`}
-                                            className="w-12 h-12 rounded-full border-4 border-white object-cover shadow-sm bg-peach/20" 
-                                        />
-                                    ))}
-                                </div>
-                                <div className="text-sm font-bold text-dark/60 leading-tight">
-                                    +3,400 <br/> Pacientes felices en {city}
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-
-                {/* Right Side: Dentist Image */}
+        <section id="inicio" className="relative isolate bg-white pt-0">
+            <BrandSparkles className="absolute right-[4%] top-14 hidden h-20 w-20 text-primary/40 lg:block" />
+            <div className="container relative mx-auto grid items-center gap-2 px-6 pb-0 pt-0 lg:min-h-[650px] lg:grid-cols-[1.04fr_.96fr] lg:gap-6 lg:pb-0 lg:pt-0">
                 <motion.div
-                    initial={{ opacity: 0, y: 100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.3 }}
-                    className="absolute bottom-0 right-0 w-[50%] h-[95%] hidden lg:flex justify-center items-end pointer-events-none z-10"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.55, ease: "easeOut" }}
+                    className="relative z-10 order-1 max-w-[640px] pb-5 pt-0 lg:pb-12 lg:pt-0"
                 >
-                    <img 
-                        src="/images-media/imagen-hero-transparent.png" 
-                        alt="Especialistas Dental Sunset" 
-                        className="h-full w-auto object-contain object-bottom select-none drop-shadow-2xl"
-                    />
+                    <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#D7E6F5] bg-white px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#315579] shadow-sm sm:text-[11px]">
+                        <span className="h-2 w-2 rounded-full bg-primary" />
+                        {branding.trade} <span aria-hidden="true">·</span> {city}
+                    </p>
 
-                    {/* Circular Badge from original */}
-                    <div className="absolute top-[20%] left-[5%] z-20 w-32 h-32 bg-peach rounded-full flex items-center justify-center p-4 text-center shadow-2xl -rotate-12 border-4 border-white">
-                        <span className="text-xs font-bold text-navy leading-tight uppercase tracking-wider">
-                            Excelencia <br/> Sunset
-                        </span>
+                    <h1 className="max-w-[15ch] font-serif text-[clamp(2.8rem,5.1vw,4.55rem)] font-bold leading-[1.04] tracking-[-0.04em] text-navy">
+                        La <span className="italic text-primary">sonrisa</span> que mereces, con la tranquilidad que buscas.
+                    </h1>
+
+                    <p className="mt-6 max-w-[34rem] text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+                        Especialistas en odontología estética y avanzada. Experimenta un cuidado dental de clase mundial con el Dr. Benito y el Dr. César en el corazón de {city}.
+                    </p>
+
+                    <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:gap-6">
+                        <Link href="#contact" className="inline-flex h-14 items-center justify-center rounded-full bg-primary px-8 text-xs font-bold uppercase tracking-[0.16em] text-white shadow-[0_12px_26px_rgba(40,108,253,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#1756E8] hover:shadow-[0_16px_30px_rgba(40,108,253,0.28)] sm:w-auto">
+                            Agendar cita <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+
+                        <a href="#tratamientos" className="group inline-flex items-center gap-3 self-center text-left sm:self-auto">
+                            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#B7D2F0] bg-white text-primary transition-colors group-hover:bg-[#EDF5FD]">
+                                <Play className="ml-0.5 h-4 w-4 fill-current" />
+                            </span>
+                            <span className="text-xs font-bold uppercase tracking-[0.16em] text-navy">Ver tratamientos</span>
+                        </a>
                     </div>
                 </motion.div>
+
+                {/* La composición lateral y el acento azul retoman “Recursos para desarrollar una web desde cero con calidad.jpg”; el fondo claro y el aire editorial retoman “1.jpg”. El PNG se mantiene íntegro y alineado abajo. */}
+                <motion.div
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.08, ease: "easeOut" }}
+                    className="relative order-2 mx-auto flex min-h-[340px] w-full max-w-[560px] items-end justify-center sm:min-h-[430px] lg:min-h-[650px] lg:max-w-none"
+                >
+                    <div className="pointer-events-none absolute bottom-[4%] left-[12%] right-[10%] h-[72%] rounded-full bg-[#286CFD]/10 blur-3xl sm:h-[78%]" />
+                    <div className="pointer-events-none absolute bottom-[12%] right-[13%] h-20 w-20 rounded-full border border-[#286CFD]/10 bg-[#DDEBFF]/35 sm:h-28 sm:w-28" />
+                    <img
+                        src="/images-media/imagen-hero-transparent.png"
+                        alt="Profesional odontológico con uniforme clínico"
+                        className="relative z-10 block h-[340px] w-auto max-w-none self-end object-contain object-bottom drop-shadow-[0_16px_20px_rgba(26,68,112,0.12)] sm:h-[430px] lg:h-[650px]"
+                    />
+                </motion.div>
             </div>
-
-            {/* Bottom Navy Bar (from image layout) */}
-            <motion.div 
-                initial={{ y: 100 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="w-full bg-navy relative z-30"
-            >
-                <div className="container mx-auto px-6 py-10">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-white">
-                        <div className="flex items-center gap-5">
-                            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
-                                <CheckCircle2 className="text-peach" size={28} />
-                            </div>
-                            <div>
-                                <h3 className="text-2xl font-serif font-bold text-white">Gratis</h3>
-                                <p className="text-white/60 text-xs font-bold uppercase tracking-widest">Valoración Inicial</p>
-                            </div>
-                        </div>
-                        
-                        <div className="flex items-center gap-5">
-                            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
-                                <Star className="text-peach fill-peach" size={28} />
-                            </div>
-                            <div>
-                                <h3 className="text-2xl font-serif font-bold text-white">15+ Años</h3>
-                                <p className="text-white/60 text-xs font-bold uppercase tracking-widest">Transformando Vidas</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-center gap-5">
-                            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
-                                <Calendar className="text-peach" size={28} />
-                            </div>
-                            <div>
-                                <h3 className="text-2xl font-serif font-bold text-white">{city}</h3>
-                                <p className="text-white/60 text-xs font-bold uppercase tracking-widest">Atención en tu Ciudad</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </motion.div>
         </section>
     );
 }

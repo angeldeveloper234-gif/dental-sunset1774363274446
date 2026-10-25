@@ -27,6 +27,7 @@ export interface TestimonialItem {
     role: string;
     text: string;
     tags: string[];
+    rating: number;
 }
 
 export interface Config {
@@ -106,7 +107,7 @@ export const config: Config = {
     },
     bookingUrl: "#contact",
     paymentLink: "",
-    googleMapsReviewUrl: "",
+    googleMapsReviewUrl: "https://g.page/dentalsunsetcabo",
     dynamicContent: {
         city: "Cabo San Lucas",
         localAnchor: "Plaza GARA, Local 1",
@@ -125,18 +126,18 @@ export const config: Config = {
         roadmap: [
             {
                 step: "01",
-                title: "Diagnóstico Digital",
-                desc: "Escaneo 3D y radiografía digital para una evaluación precisa sin molestias."
+                title: "Cuéntanos qué necesitas",
+                desc: "Escríbenos o llámanos para consultar por el tratamiento que te interesa."
             },
             {
                 step: "02",
-                title: "Plan Personalizado",
-                desc: "Diseñamos tu nueva sonrisa digitalmente antes de tocar un solo diente."
+                title: "Resuelve tus dudas",
+                desc: "El equipo de Dental Sunset puede orientarte sobre los servicios y la disponibilidad."
             },
             {
                 step: "03",
-                title: "Resolución Clínica",
-                desc: "Tratamientos indoloros con tecnología láser y materiales de alta gama."
+                title: "Coordina tu visita",
+                desc: "Confirma directamente con la clínica los detalles de tu consulta en Cabo San Lucas."
             }
         ],
         pricing: {
@@ -152,7 +153,7 @@ export const config: Config = {
             title: "Diseño de Sonrisa",
             problem: "Dientes manchados o desgastados",
             agitation: "Tu sonrisa es tu carta de presentación; no dejes que te reste confianza.",
-            solve: "Carillas de porcelana y blanqueamiento para una estética impecable.",
+            solve: "Consulta las alternativas de odontología estética disponibles en la clínica.",
             price: "pricing.comprehensive"
         },
         {
@@ -161,7 +162,7 @@ export const config: Config = {
             title: "Ortodoncia",
             problem: "Dientes chuecos o mala mordida",
             agitation: "Afecta tu digestión y la armonía de tu rostro a largo plazo.",
-            solve: "Brackets estéticos y alineadores invisibles de última generación.",
+            solve: "Pregunta al equipo por las opciones de ortodoncia disponibles.",
             price: "pricing.retainer"
         },
         {
@@ -170,7 +171,7 @@ export const config: Config = {
             title: "Prótesis Dental",
             problem: "Ausencia de piezas dentales",
             agitation: "Dificultad para comer y desplazamiento de los dientes restantes.",
-            solve: "Implantes y coronas de zirconio que se sienten como dientes naturales.",
+            solve: "Consulta sobre prótesis, implantes y opciones para restaurar piezas dentales.",
             price: "pricing.basic"
         },
         {
@@ -179,28 +180,45 @@ export const config: Config = {
             title: "Limpieza Profunda",
             problem: "Sarro y mal aliento",
             agitation: "La acumulación bacteriana es la principal causa de pérdida dental.",
-            solve: "Profilaxis con ultrasonido para encías sanas y aliento fresco.",
+            solve: "Pregunta por los servicios de limpieza y cuidado dental disponibles.",
             price: "pricing.basic"
         }
     ],
     testimonials: [
         {
-            name: "Andrea López",
-            role: "Paciente de Ortodoncia",
-            text: "El Dr. Benito es increíble. Mi tratamiento fue rápido y casi no sentí dolor. Las instalaciones en Plaza GARA son hermosas.",
-            tags: ["Amabilidad", "Resultados"]
+            name: "Ángel Leyva",
+            role: "Google Maps",
+            text: "Describe una diferencia entre la promoción de limpieza dental y el cobro final.",
+            tags: ["Limpieza dental", "Precio"],
+            rating: 1
         },
         {
-            name: "Michael Brown",
-            role: "Turista Médico",
-            text: "Came to Cabo for vacation, left with a brand new smile. The quality is world-class and prices are unbeatable compared to the US.",
-            tags: ["Quality", "Price"]
+            name: "Aldemar Amaral",
+            role: "Google Maps",
+            text: "Pide claridad sobre las promociones y señala que no le confirmaron el costo antes del servicio.",
+            tags: ["Promociones", "Precio"],
+            rating: 1
         },
         {
-            name: "Sofía Ramírez",
-            role: "Diseño de Sonrisa",
-            text: "Me devolvieron la confianza para sonreír en mis fotos. El equipo es súper profesional y cálido.",
-            tags: ["Estética", "Confianza"]
+            name: "Zuleor 97",
+            role: "Google Maps",
+            text: "Destaca la amabilidad del Dr. Benito y comenta que se sintió cómoda en la clínica.",
+            tags: ["Atención", "Trato"],
+            rating: 5
+        },
+        {
+            name: "Andres Aguilar",
+            role: "Google Maps",
+            text: "Resalta la actitud del equipo, la información que recibió y la eficiencia del trabajo.",
+            tags: ["Atención", "Información"],
+            rating: 5
+        },
+        {
+            name: "José María Quintana Astorga",
+            role: "Google Maps",
+            text: "Valora la atención del Dr. Moisés y la puntualidad de las citas; comenta que su tratamiento le pareció algo elevado de precio.",
+            tags: ["Atención", "Precio"],
+            rating: 5
         }
     ],
     demoUser: {

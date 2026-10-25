@@ -1,10 +1,10 @@
+"use client";
+
 import { Contact as ContactSection } from "@/components/sections";
-import { SEO } from "@/components/ui/SEO";
 
 export function Contact() {
     return (
-        <main className="pt-24 min-h-screen bg-white">
-            <SEO title="Contacto" />
+        <main className="min-h-screen bg-white">
             <ContactSection />
         </main>
     );

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { config } from "@/config";
 
@@ -11,17 +13,24 @@ interface UserContextType {
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
-    const [name, setName] = useState(() => localStorage.getItem("user_name") || "");
-    const [email, setEmail] = useState(() => localStorage.getItem("user_email") || "");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [hydrated, setHydrated] = useState(false);
+
+    useEffect(() => {
+        setName(localStorage.getItem("user_name") || "");
+        setEmail(localStorage.getItem("user_email") || "");
+        setHydrated(true);
+    }, []);
 
 
     useEffect(() => {
-        if (name) localStorage.setItem("user_name", name);
-    }, [name]);
+        if (hydrated && name) localStorage.setItem("user_name", name);
+    }, [name, hydrated]);
 
     useEffect(() => {
-        if (email) localStorage.setItem("user_email", email);
-    }, [email]);
+        if (hydrated && email) localStorage.setItem("user_email", email);
+    }, [email, hydrated]);
 
 
 

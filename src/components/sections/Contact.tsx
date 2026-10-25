@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { config } from "@/config";
 
@@ -7,16 +7,16 @@ export function Contact() {
     const { dynamicContent, demoUser } = config;
 
     return (
-        <section id="contact" className="py-24 md:py-32 bg-ivory">
+        <section id="contact" className="scroll-mt-32 py-24 md:py-32 bg-ivory">
             <div className="container mx-auto px-6">
                 <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                    <div>
+                    <div id="ubicacion" className="scroll-mt-32">
                         <span className="text-peach font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Contacto</span>
                         <h2 className="text-4xl md:text-5xl font-serif text-navy leading-tight mb-8 uppercase tracking-tight">
                             VISÍTANOS EN <br/> <span className="italic text-navy/70 normal-case">{dynamicContent.city.toUpperCase()}</span>
                         </h2>
                         <p className="text-dark/60 mb-12 font-sans leading-relaxed max-w-md">
-                            Estamos ubicados estratégicamente para tu comodidad. Estacionamiento privado y acceso universal en todas nuestras instalaciones.
+                            Estamos en {dynamicContent.localAnchor}, en {dynamicContent.city}. Escríbenos para consultar por un tratamiento o coordinar una valoración.
                         </p>
 
                         <div className="space-y-8">
@@ -24,19 +24,13 @@ export function Contact() {
                                 {
                                     icon: MapPin,
                                     title: "Dirección",
-                                    desc: "Calle Kukulkán plaza GARA local 1, Cabo San Lucas, 23472"
+                                    desc: `${dynamicContent.localAnchor}, ${dynamicContent.city}`
                                 },
                                 {
                                     icon: Phone,
                                     title: "Teléfono / WhatsApp",
                                     desc: demoUser.whatsapp
                                 },
-                                {
-                                    icon: Clock,
-                                    title: "Horario de Atención",
-                                    desc: "Lun - Vie: 9:00 AM - 7:00 PM",
-                                    desc2: "Sáb: 9:00 AM - 2:00 PM"
-                                }
                             ].map((item, idx) => (
                                 <div key={idx} className="flex items-start gap-5 group">
                                     <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-navy shrink-0 group-hover:bg-navy group-hover:text-ivory transition-all duration-500 shadow-xl shadow-navy/5 border border-navy/5">
@@ -45,7 +39,11 @@ export function Contact() {
                                     <div>
                                         <h4 className="font-bold text-navy mb-1 font-sans text-sm uppercase tracking-wider">{item.title}</h4>
                                         <p className="text-dark/70 text-sm leading-relaxed">{item.desc}</p>
-                                        {item.desc2 && <p className="text-dark/70 text-sm leading-relaxed">{item.desc2}</p>}
+                                        {idx === 0 && (
+                                            <a href={config.googleMapsReviewUrl} target="_blank" rel="noreferrer" className="mt-2 inline-flex text-xs font-bold text-primary hover:text-[#1756E8]">
+                                                Abrir en Google Maps
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             ))}
@@ -53,7 +51,7 @@ export function Contact() {
                     </div>
 
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 1, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="bg-white p-10 md:p-14 rounded-[3rem] shadow-2xl shadow-navy/5 border border-white/50 relative"

@@ -1,6 +1,7 @@
 export { Navbar } from "./Navbar";
 export { Hero } from "./Hero";
 export { Features } from "./Features";
+export { ServiceTicker } from "./ServiceTicker";
 export { Roadmap } from "./Roadmap";
 export { Stats } from "./Stats";
 export { Testimonials } from "./Testimonials";

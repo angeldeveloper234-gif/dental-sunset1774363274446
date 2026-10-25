@@ -1,27 +1,29 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Plus, Minus, HelpCircle } from "lucide-react";
+import { Plus, HelpCircle } from "lucide-react";
+import { config } from "@/config";
+import { BrandSparkles } from "@/components/ui/BrandSparkles";
 
 const faqs = [
     {
-        q: "¿La primera consulta de valoración tiene costo?",
-        a: "En Dental Sunset, tu primera consulta de diagnóstico integral es una inversión en tu salud. Incluye examen clínico detallado y plan de tratamiento personalizado sin cargos ocultos.",
+        q: "¿Dónde está Dental Sunset?",
+        a: `La clínica está en ${config.dynamicContent.localAnchor}, ${config.dynamicContent.city}.`,
     },
     {
-        q: "¿Aceptan seguros dentales internacionales?",
-        a: "Sí, trabajamos con los principales seguros de EE. UU. y Canadá. Nuestro equipo te ayudará con toda la documentación necesaria para que tu reembolso sea rápido y sencillo.",
+        q: "¿Cómo consulto disponibilidad?",
+        a: `Comunícate con la clínica por WhatsApp al ${config.demoUser.whatsapp} para consultar horarios y coordinar tu visita.`,
     },
     {
-        q: "¿Realizan tratamientos en un solo día?",
-        a: "Gracias a nuestra tecnología CAD/CAM y laboratorio propio, podemos realizar coronas y carillas en una sola sesión, optimizando tu tiempo sin comprometer la calidad.",
+        q: "¿Qué tratamientos ofrece la clínica?",
+        a: `En el sitio puedes consultar información sobre ${config.services.map((service) => service.title.toLowerCase()).join(", ")}. Confirma con el equipo cuál es adecuado para tu caso.`,
     },
     {
-        q: "¿Qué materiales utilizan para los implantes?",
-        a: "Utilizamos exclusivamente titanio de grado médico y zirconio de alta gama de marcas líderes mundiales, garantizando la máxima biocompatibilidad y durabilidad estética.",
+        q: "¿Puedo preguntar por el precio de un tratamiento?",
+        a: "Sí. Escríbele a la clínica para consultar el costo y los detalles del tratamiento que te interesa.",
     },
     {
-        q: "¿Cómo puedo agendar si vengo de fuera de la ciudad?",
-        a: "Contamos con un servicio de Dental Concierge que puede ayudarte a coordinar tu transporte y sugerencias de hospedaje para que tu experiencia en Cabo sea perfecta.",
+        q: "¿Cómo llego a la clínica?",
+        a: `${config.dynamicContent.localAnchor}, ${config.dynamicContent.city}. Puedes abrir la ubicación desde el enlace de Google Maps en la sección de contacto.`,
     },
 ];
 
@@ -30,6 +32,7 @@ export function FAQ() {
 
     return (
         <section id="faq" className="py-24 md:py-32 bg-ivory relative border-t border-navy/5">
+            <BrandSparkles className="absolute left-[5%] top-20 hidden h-20 w-20 -rotate-12 text-primary/10 lg:block" />
             <div className="container mx-auto px-6 max-w-4xl">
                 <div className="text-center mb-16 md:mb-24">
                     <span className="text-peach font-bold tracking-[0.2em] uppercase text-xs mb-4 block">

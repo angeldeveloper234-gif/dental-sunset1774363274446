@@ -2,29 +2,29 @@ import type { Config } from 'tailwindcss'
 
 const config: Config = {
     content: [
-        "./index.html",
+        "./app/**/*.{js,ts,jsx,tsx}",
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
         extend: {
             colors: {
-                background: "#EFF8FF", // Light Blue Base
-                foreground: "#121212", // Dark Body Text (per request)
-                navy: "#0060C9",       // Important elements / Primary Blue
-                ivory: "#EFF8FF",      // Background (60%)
-                peach: "#FAC927",      // Accent Gold (5%)
-                softblue: "#DAEDFB",   // Secondary Blue (30%)
+                background: "#FFFFFF",
+                foreground: "#18334F",
+                navy: "#152542",
+                ivory: "#FFFFFF",
+                peach: "#286CFD",
+                softblue: "#EEF3FF",
                 white: "#FFFFFF",      // Pure White for clear elements
                 primary: {
-                    DEFAULT: "#0060C9",
-                    foreground: "#EFF8FF",
+                    DEFAULT: "#286CFD",
+                    foreground: "#FFFFFF",
                 },
                 secondary: {
-                    DEFAULT: "#DAEDFB",
-                    foreground: "#0060C9",
+                    DEFAULT: "#DCE7FF",
+                    foreground: "#152542",
                 },
-                accent: "#FAC927",
-                dark: "#121212",       // Specific dark color for body text
+                accent: "#286CFD",
+                dark: "#152542",
             },
             fontFamily: {
                 sans: ["Inter", "sans-serif"],
