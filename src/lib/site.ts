@@ -1,5 +1,9 @@
-export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3002";
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? "https://" + process.env.VERCEL_PROJECT_PRODUCTION_URL
+    : "https://dentalsunset.vercel.app")
+).replace(/\/$/, "");
 export const allowIndexing = process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true";
 export function pageMetadata(title: string, description: string, path: string) {
   return {
