@@ -11,28 +11,25 @@ export function Hero() {
     return (
         <section id="inicio" className="relative isolate bg-white pt-0">
             <BrandSparkles className="absolute right-[4%] top-14 hidden h-20 w-20 text-primary/40 lg:block" />
-            <div className="container relative mx-auto grid items-center gap-2 px-6 pb-0 pt-0 lg:min-h-[650px] lg:grid-cols-[1.04fr_.96fr] lg:gap-6 lg:pb-0 lg:pt-0">
+            <div className="container relative mx-auto grid items-center gap-2 px-6 pb-0 pt-6 lg:min-h-[650px] lg:grid-cols-[1.04fr_.96fr] lg:gap-6 lg:pb-0 lg:pt-0">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.55, ease: "easeOut" }}
                     className="relative z-10 order-1 max-w-[640px] pb-5 pt-0 lg:pb-12 lg:pt-0"
                 >
-                    <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#D7E6F5] bg-white px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-[#315579] shadow-sm sm:text-[11px]">
-                        <span className="h-2 w-2 rounded-full bg-primary" />
-                        {branding.trade} <span aria-hidden="true">·</span> {city}
-                    </p>
+                    <p className="mb-5 text-sm font-medium text-muted">Dental Sunset <span className="mx-2 text-primary/40">/</span> Cabo San Lucas</p>
 
-                    <h1 className="max-w-[15ch] font-serif text-[clamp(2.8rem,5.1vw,4.55rem)] font-bold leading-[1.04] tracking-[-0.04em] text-navy">
-                        La <span className="italic text-primary">sonrisa</span> que mereces, con la tranquilidad que buscas.
+                    <h1 className="max-w-[15ch] font-display text-[clamp(2.8rem,5.1vw,4.55rem)] font-bold leading-[1.04] tracking-[-0.04em] text-navy">
+                        La <span className="font-normal text-muted">sonrisa</span> que mereces, con la tranquilidad que buscas.
                     </h1>
 
                     <p className="mt-6 max-w-[34rem] text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-                        Especialistas en odontología estética y avanzada. Experimenta un cuidado dental de clase mundial con el Dr. Benito y el Dr. César en el corazón de {city}.
+                        Un espacio para hablar de tu salud dental, resolver dudas y conocer tus opciones. Atención cercana, desde la primera conversación.
                     </p>
 
                     <div className="mt-8 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:gap-6">
-                        <Link href="#contact" className="inline-flex h-14 items-center justify-center rounded-full bg-primary px-8 text-xs font-bold uppercase tracking-[0.16em] text-white shadow-[0_12px_26px_rgba(40,108,253,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#1756E8] hover:shadow-[0_16px_30px_rgba(40,108,253,0.28)] sm:w-auto">
+                        <Link href="/reservar" className="inline-flex h-14 items-center justify-center rounded-full bg-primary px-8 text-xs font-bold uppercase tracking-[0.16em] text-white shadow-[0_12px_26px_rgba(40,108,253,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#1756E8] hover:shadow-[0_16px_30px_rgba(40,108,253,0.28)] sm:w-auto">
                             Agendar cita <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
 

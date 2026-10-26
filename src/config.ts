@@ -1,3 +1,4 @@
+import { demoReviews } from "./content/demoReviews";
 export interface GalleryItem {
     title: string;
     category: string;
@@ -31,6 +32,7 @@ export interface TestimonialItem {
 }
 
 export interface Config {
+    demoMode: boolean;
     branding: {
         name: string;
         slogan: string;
@@ -47,6 +49,7 @@ export interface Config {
     bookingUrl: string;
     paymentLink: string;
     googleMapsReviewUrl: string;
+    social: { facebook: string; instagram: string };
     dynamicContent: {
         city: string;
         localAnchor: string;
@@ -92,6 +95,7 @@ export interface Config {
 }
 
 export const config: Config = {
+    demoMode: true,
     branding: {
         name: "Dental Sunset",
         slogan: "Transforma tu Sonrisa en el Paraíso",
@@ -107,14 +111,15 @@ export const config: Config = {
     },
     bookingUrl: "#contact",
     paymentLink: "",
-    googleMapsReviewUrl: "https://g.page/dentalsunsetcabo",
+    googleMapsReviewUrl: "https://www.google.com/maps/search/?api=1&query=Cabo+San+Lucas",
+    social: { facebook: "/contact?canal=facebook", instagram: "/contact?canal=instagram" },
     dynamicContent: {
         city: "Cabo San Lucas",
-        localAnchor: "Plaza GARA, Local 1",
+        localAnchor: "Ubicación de referencia",
         stats: {
-            projectsDone: 3500,
-            experienceYears: 15,
-            happyClients: 3400,
+            projectsDone: 0,
+            experienceYears: 0,
+            happyClients: 0,
             m2Built: "100%"
         },
         specialization: {
@@ -184,47 +189,11 @@ export const config: Config = {
             price: "pricing.basic"
         }
     ],
-    testimonials: [
-        {
-            name: "Ángel Leyva",
-            role: "Google Maps",
-            text: "Describe una diferencia entre la promoción de limpieza dental y el cobro final.",
-            tags: ["Limpieza dental", "Precio"],
-            rating: 1
-        },
-        {
-            name: "Aldemar Amaral",
-            role: "Google Maps",
-            text: "Pide claridad sobre las promociones y señala que no le confirmaron el costo antes del servicio.",
-            tags: ["Promociones", "Precio"],
-            rating: 1
-        },
-        {
-            name: "Zuleor 97",
-            role: "Google Maps",
-            text: "Destaca la amabilidad del Dr. Benito y comenta que se sintió cómoda en la clínica.",
-            tags: ["Atención", "Trato"],
-            rating: 5
-        },
-        {
-            name: "Andres Aguilar",
-            role: "Google Maps",
-            text: "Resalta la actitud del equipo, la información que recibió y la eficiencia del trabajo.",
-            tags: ["Atención", "Información"],
-            rating: 5
-        },
-        {
-            name: "José María Quintana Astorga",
-            role: "Google Maps",
-            text: "Valora la atención del Dr. Moisés y la puntualidad de las citas; comenta que su tratamiento le pareció algo elevado de precio.",
-            tags: ["Atención", "Precio"],
-            rating: 5
-        }
-    ],
+    testimonials: demoReviews,
     demoUser: {
         name: "Recepción Dental Sunset",
-        email: "citas@dentalsunset.com",
-        whatsapp: "+526241324179"
+        email: "hola@example.com",
+        whatsapp: ""
     },
     features: {
         showGallery: true,

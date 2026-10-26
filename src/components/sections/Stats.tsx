@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { config } from "@/config";
 import { MapPin, CheckCircle2 } from "lucide-react";
+import { Philosophy } from "./Philosophy";
+import { ClinicMetrics } from "./ClinicMetrics";
 
 export function Stats() {
     const highlights = [
         { value: "Odontología", label: "Estética y avanzada" },
         { value: config.dynamicContent.city, label: "Ubicación" },
-        { value: "Plaza GARA", label: config.dynamicContent.localAnchor.replace("Plaza GARA, ", "") },
+        { value: "+15 años", label: "De experiencia" },
     ];
 
     return (
@@ -15,7 +17,7 @@ export function Stats() {
                 <div className="container mx-auto grid grid-cols-3 divide-x divide-white/20 px-4 py-5 sm:px-6 sm:py-6">
                     {highlights.map((item) => (
                         <div key={item.label} className="flex min-w-0 flex-col items-center justify-center px-2 text-center sm:px-5">
-                            <strong className="whitespace-nowrap font-serif text-[clamp(1.2rem,4vw,2.5rem)] font-semibold leading-none tracking-tight">
+                            <strong className="font-display text-[clamp(.9rem,3.6vw,2.5rem)] font-semibold leading-tight tracking-tight">
                                 {item.value}
                             </strong>
                             <span className="mt-2 max-w-[10rem] text-[8px] font-bold uppercase leading-[1.35] tracking-[0.1em] text-white/85 sm:text-[10px] sm:tracking-[0.16em]">
@@ -27,6 +29,7 @@ export function Stats() {
             </section>
 
             <section id="sobre-nosotros" className="relative scroll-mt-32 bg-softblue py-20 md:py-24">
+                <Philosophy />
                 <div className="container mx-auto grid items-center gap-12 px-6 lg:grid-cols-2 lg:gap-20">
                     <div className="relative mx-auto w-full max-w-[520px]">
                         <motion.div
@@ -38,7 +41,7 @@ export function Stats() {
                         >
                             <img
                                 src="/images-media/Dentista de pie con los brazos cruzados.jpg"
-                                alt="Dr. Benito - Especialista Dental"
+                                alt="Profesional dental en una fotografía ilustrativa"
                                 className="h-full w-full object-cover"
                             />
 
@@ -48,7 +51,7 @@ export function Stats() {
                                         <MapPin className="h-5 w-5 text-primary" />
                                     </div>
                                     <div>
-                                        <p className="font-serif text-base font-bold leading-tight text-navy">Nos encuentras en</p>
+                                        <p className="font-display text-base font-bold leading-tight text-navy">Nos encuentras en</p>
                                         <p className="mt-1 text-[11px] font-medium tracking-wide text-slate-600">{config.dynamicContent.localAnchor}, {config.dynamicContent.city}</p>
                                     </div>
                                 </div>
@@ -68,14 +71,15 @@ export function Stats() {
                                 <div className="h-px flex-1 bg-navy/15" />
                             </div>
 
-                            <h2 className="mb-7 font-serif text-3xl leading-[1.1] text-navy sm:text-4xl md:text-5xl">
-                                Excelencia en odontología con <span className="italic text-primary">trato humano</span>
+                            <h2 className="mb-7 font-display text-3xl leading-[1.1] text-navy sm:text-4xl md:text-5xl">
+                                Excelencia en odontología con <span className="font-normal text-muted">trato humano</span>
                             </h2>
 
                             <p className="mb-8 text-base leading-7 text-slate-700 sm:text-lg sm:leading-8">
                                 Dental Sunset es una clínica odontológica en Cabo San Lucas. En esta página puedes conocer algunos tratamientos y contactar al equipo para consultar la atención que necesitas.
                             </p>
 
+                            <div className="mb-8"><ClinicMetrics /></div>
                             <ul className="space-y-5">
                                 {[
                                     {
@@ -88,7 +92,7 @@ export function Stats() {
                                     },
                                     {
                                         title: "Ubicación en Cabo San Lucas",
-                                        desc: "Dental Sunset está en Plaza GARA, Local 1."
+                                        desc: "Conoce el mapa de referencia y la experiencia de contacto de la demo."
                                     }
                                 ].map((item) => (
                                     <li key={item.title} className="flex gap-3">

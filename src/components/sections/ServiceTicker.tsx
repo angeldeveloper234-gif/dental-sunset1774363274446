@@ -1,23 +1,40 @@
-import { config } from "@/config";
+import { treatments } from "@/content/treatments";
+import { ToothIcon } from "@/components/ui/BrandLogo";
 
 export function ServiceTicker() {
-    const services = config.services;
-
-    return (
-        <section aria-label="Tratamientos disponibles" className="overflow-hidden bg-primary py-4 text-white">
-            <div className="dental-marquee flex w-max items-center" aria-hidden="true">
-                {[0, 1].map((copy) => (
-                    <div key={copy} className="flex shrink-0 items-center gap-8 pr-8 sm:gap-12 sm:pr-12">
-                        {services.map((service) => (
-                            <span key={`${copy}-${service.id}`} className="inline-flex items-center gap-3 whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.16em] sm:text-xs">
-                                <span className="text-lg" aria-hidden="true">{service.icon}</span>
-                                {service.title}
-                                <span className="h-1.5 w-1.5 rounded-full bg-white/55" />
-                            </span>
-                        ))}
-                    </div>
-                ))}
-            </div>
-        </section>
-    );
+  // Both groups include identical trailing spacing to keep the loop seamless.
+  const items = treatments;
+  return (
+    <section
+      aria-label="Tratamientos disponibles"
+      className="service-ticker overflow-hidden bg-primary text-white"
+    >
+      <ul className="sr-only">
+        {treatments.map((service) => (
+          <li key={service.slug}>{service.title}</li>
+        ))}
+      </ul>
+      <div
+        className="dental-marquee flex w-max items-center"
+        aria-hidden="true"
+      >
+        {[0, 1].map((copy) => (
+          <div
+            key={copy}
+            className="ticker-group flex min-w-[100vw] shrink-0 items-center justify-around"
+          >
+            {items.map((service, index) => (
+              <span
+                key={`${service.slug}-${index}`}
+                className="inline-flex shrink-0 items-center gap-5 whitespace-nowrap px-7 py-5 text-base font-medium tracking-[-0.01em] sm:gap-7 sm:px-9 sm:text-lg"
+              >
+                <ToothIcon className="h-7 w-7 shrink-0 text-white/85" />
+                {service.title}
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }

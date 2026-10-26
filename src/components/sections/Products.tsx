@@ -54,7 +54,7 @@ export function Products() {
                                 
                                 <Button 
                                     className="w-full bg-white/5 hover:bg-[#F59E0B] text-white hover:text-black transition-all duration-500 rounded-none h-14 tracking-[0.2em] font-black text-[10px] uppercase"
-                                    onClick={() => window.location.href = `https://wa.me/${config.demoUser.whatsapp.replace('+', '')}?text=Hola, me interesa el servicio: ${product.name}`}
+                                    onClick={() => window.location.href = "/contact"}
                                 >
                                     Consultar por WhatsApp <ShoppingCart className="ml-2 w-4 h-4" />
                                 </Button>

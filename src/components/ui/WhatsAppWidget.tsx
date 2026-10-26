@@ -1,39 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { config } from "@/config";
+import { whatsappBookingUrl } from "@/lib/booking";
 
 export function WhatsAppWidget() {
-    const [busySectionVisible, setBusySectionVisible] = useState(false);
+    const handleClick = () => { window.location.assign(whatsappBookingUrl()); };
 
-    useEffect(() => {
-        const sections = document.querySelectorAll("#inicio, #datos-destacados, #tratamientos, #contact");
-        if (!sections.length) return;
-
-        const updateVisibility = () => {
-            const viewportHeight = window.innerHeight;
-            setBusySectionVisible(Array.from(sections).some((section) => {
-                const rect = section.getBoundingClientRect();
-                return rect.top < viewportHeight && rect.bottom > 0;
-            }));
-        };
-        updateVisibility();
-        window.addEventListener("scroll", updateVisibility, { passive: true });
-        window.addEventListener("resize", updateVisibility);
-        return () => {
-            window.removeEventListener("scroll", updateVisibility);
-            window.removeEventListener("resize", updateVisibility);
-        };
-    }, []);
-
-    const handleClick = () => {
-        const message = encodeURIComponent("¡Hola Dental Sunset! Me gustaría agendar una valoración dental.");
-        const whatsappUrl = `https://wa.me/${config.demoUser.whatsapp.replace(/\+/g, "")}?text=${message}`;
-        window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    };
-
-    if (busySectionVisible) return null;
 
     return (
         <motion.button
@@ -41,7 +13,7 @@ export function WhatsAppWidget() {
             onClick={handleClick}
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.96 }}
-            className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_rgba(0,0,0,0.18)] ring-4 ring-white transition-shadow hover:shadow-[0_10px_28px_rgba(37,211,102,0.35)] md:bottom-7 md:right-7"
+            className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-5 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_rgba(0,0,0,0.18)] ring-4 ring-white transition-shadow hover:shadow-[0_10px_28px_rgba(37,211,102,0.35)] md:bottom-7 md:right-7"
             aria-label="Contactar por WhatsApp"
             title="Escríbenos por WhatsApp"
         >

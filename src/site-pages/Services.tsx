@@ -10,7 +10,7 @@ export function Services() {
                     <span className="text-primary font-bold tracking-widest uppercase text-sm block mb-4">
                         Especialidades
                     </span>
-                    <h1 className="mb-6 font-serif text-4xl font-bold leading-tight text-navy md:text-6xl">
+                    <h1 className="mb-6 font-display text-4xl font-bold leading-tight text-navy md:text-6xl">
                         Soluciones <span className="text-primary">dentales</span>
                     </h1>
                     <p className="text-base leading-relaxed text-slate-600 md:text-xl">

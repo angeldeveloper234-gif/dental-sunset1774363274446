@@ -50,3 +50,22 @@ Capturas de revisión guardadas en `C:\Users\usuario\.codex\visualizations\2026\
 Se revisó una ventana móvil de 30 días: 70 conversaciones clasificadas, con cobertura parcial (9 de 16 líneas; varias desconectadas o sin datos). En los historiales completos consultados, los contactos de clínicas preguntaron si la propuesta tenía costo, cuánto cobramos y pidieron que les contemos la idea. En climatización aceptaron recibir una muestra; también apareció una consulta que combina aire acondicionado y sistemas solares. No apareció una petición de pintura en esta muestra parcial, así que no se toma como señal confirmada.
 
 Implicancias para los ejemplos: la demo dental debe llevar con claridad de tratamiento a valoración/cita y dejar el contacto a mano; las demos de climatización deben mostrar servicios concretos y una ruta directa a cotizar, contemplando instalaciones y energía solar cuando aplique. La muestra debe explicar qué incluye el ejemplo y cómo solicitar precio sin publicar tarifas que no estén verificadas. Mantener `Dental Sunset`, `Climax` y `ClimaPro` para las marcas que ya existen; reservar un nombre inventado para una demo de pintura hasta confirmar que ese rubro forma parte del portafolio.
+
+## Identidad y tipografía — 25-10-2026
+
+Respaldo anterior al cambio solicitado: commit `29711fe`.
+
+- Satoshi se sirve localmente mediante `next/font/local`. Para sustituirla, editar `src/theme/typography.ts`; para separar títulos y cuerpo, editar `--font-display` y `--font-body` en `src/index.css`. No quedan familias Inter ni Playfair en las páginas.
+- Los colores de texto se controlan desde `--color-heading` (RGB) y `--color-muted`. Se conserva el azul de marca. `font-display` identifica títulos sin acoplarlos a una familia concreta.
+- `BrandLogo.tsx` contiene el símbolo vectorial de diente y sol y su logotipo. Se comparte entre navegación y pie.
+- La franja azul superior contiene teléfono, ubicación en escritorio y Facebook, Instagram y WhatsApp. Las redes se configuran en `config.social`; los enlaces se obtuvieron de https://www.allbiz.mx/dental-sunset-624-132-4179 y https://www.loscabosguide.com/item/dental-sunset/ (las redes limitaron el acceso directo). No se inventaron horarios ni se añadieron enlaces sociales vacíos.
+- `Philosophy.tsx` adapta la referencia del texto centrado con pesos y grises alternados, un icono dental, borde suave y acción hacia la página de la clínica.
+- `ServiceTicker.tsx` usa iconos SVG, dos grupos idénticos y un desplazamiento del 50% sin separación externa. Cada grupo tiene un mínimo de un viewport de ancho y repite dos veces los servicios; esto evita huecos en pantallas anchas. La animación se pausa al pasar el cursor y respeta movimiento reducido. La franja de datos debajo del hero conserva su contenido.
+- El pie usa el mismo logo, contacto, redes y enlaces reales del sitio; se retiraron los enlaces legales vacíos de la demo.
+- Capturas completas: `branding-final-390.png` y `branding-final-1440.png`, en la carpeta de revisión indicada arriba.
+
+## Ampliación a demo de 25 páginas
+
+La aclaración más reciente del usuario define Dental Sunset como una clínica ficticia. Esta definición sustituye las referencias históricas a la clínica real y a sus reseñas: se retiraron sus datos de contacto y se usan 32 reseñas ficticias identificadas.
+
+La arquitectura, fuentes y pruebas están en `ARQUITECTURA_CONTENIDOS.md`. Los contenidos editables están en `src/content/treatments.ts`, `src/content/posts.ts` y `src/content/demoReviews.ts`. El footer se genera desde los mismos datos. Se conserva el respaldo anterior `29711fe`.

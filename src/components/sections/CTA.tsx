@@ -1,6 +1,7 @@
 import { CalendarCheck, Phone, Check, Sparkles } from "lucide-react";
 import { config } from "@/config";
 import Link from "next/link";
+import { whatsappBookingUrl } from "@/lib/booking";
 import { BrandSparkles } from "@/components/ui/BrandSparkles";
 import { ToothPhoto, toothOutline } from "@/components/ui/ToothPhoto";
 
@@ -12,7 +13,7 @@ export function CTA() {
             <div className="container relative mx-auto grid items-center gap-8 px-6 md:grid-cols-[1.1fr_.9fr] md:gap-2">
                 <div className="relative z-20 max-w-3xl text-center md:py-8 md:text-left">
                     <span className="mb-5 block text-[10px] font-bold uppercase tracking-[0.2em] text-white/75">Dental Sunset · Cabo San Lucas</span>
-                    <h2 className="font-serif text-4xl leading-[1.08] tracking-[-0.035em] text-white md:text-5xl lg:text-6xl">
+                    <h2 className="font-display text-4xl leading-[1.08] tracking-[-0.035em] text-white md:text-5xl lg:text-6xl">
                         Agenda tu valoración y da el siguiente paso con confianza.
                     </h2>
                     <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/85 md:mx-0 md:text-lg">
@@ -24,10 +25,10 @@ export function CTA() {
                         ))}
                     </ul>
                     <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row md:justify-start">
-                        <Link href="/contact" className="inline-flex min-h-14 items-center justify-center rounded-full bg-white px-7 text-xs font-bold uppercase tracking-[0.14em] text-[#174DAD] shadow-lg transition hover:-translate-y-0.5 hover:bg-[#F2F6FF]">
+                        <Link href="/reservar" className="inline-flex min-h-14 items-center justify-center rounded-full bg-white px-7 text-xs font-bold uppercase tracking-[0.14em] text-[#174DAD] shadow-lg transition hover:-translate-y-0.5 hover:bg-[#F2F6FF]">
                             <CalendarCheck className="mr-2 h-4 w-4" /> Agendar cita
                         </Link>
-                        <a href={`https://wa.me/${config.demoUser.whatsapp.replace("+", "")}`} target="_blank" rel="noreferrer" className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/55 px-7 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:bg-white/10">
+                        <a href={whatsappBookingUrl()} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/55 px-7 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:bg-white/10">
                             <Phone className="mr-2 h-4 w-4" /> WhatsApp
                         </a>
                     </div>

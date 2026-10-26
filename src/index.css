@@ -1,62 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+:root {
+  --font-body: var(--font-brand), Arial, sans-serif;
+  --font-display: var(--font-body);
+  --color-heading: 41 45 52;
+  --color-muted: #666d78;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-    html {
-        scroll-behavior: smooth;
-        @apply antialiased text-navy bg-ivory;
-    }
+  html {
+    scroll-behavior: smooth;
+    @apply antialiased text-navy bg-ivory;
+  }
 
-    body {
-        @apply min-h-screen overflow-x-hidden font-sans bg-ivory;
-    }
+  body {
+    @apply min-h-screen overflow-x-hidden font-sans bg-ivory;
+  }
 
-    h1, h2, h3, h4, h5, h6 {
-        @apply font-serif text-navy font-medium tracking-tight;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display text-navy font-bold tracking-tight;
+  }
 }
 
 @layer utilities {
-    .glass-panel {
-        background-color: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(40, 108, 253, 0.12);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-    }
+  .glass-panel {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(40, 108, 253, 0.12);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  }
 
-    .medical-shadow {
-        box-shadow: 0 10px 40px -10px rgba(40, 108, 253, 0.1);
-    }
+  .medical-shadow {
+    box-shadow: 0 10px 40px -10px rgba(40, 108, 253, 0.1);
+  }
 
-    .custom-scrollbar::-webkit-scrollbar {
-        width: 6px;
-    }
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
 
-    .custom-scrollbar::-webkit-scrollbar-track {
-        background: #F1F5F9;
-    }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
 
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        background-color: #CBD5E1;
-        border-radius: 9999px;
-    }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 9999px;
+  }
 }
 
 @keyframes dental-marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .dental-marquee {
-    animation: dental-marquee 34s linear infinite;
+  animation: dental-marquee 42s linear infinite;
 }
 
-.review-slider { scrollbar-width: none; }
-.review-slider::-webkit-scrollbar { display: none; }
-@media (prefers-reduced-motion: reduce) {
-    .dental-marquee { animation: none; }
-    html { scroll-behavior: auto; }
+.service-ticker:hover .dental-marquee {
+  animation-play-state: paused;
 }
+section[id] {
+  scroll-margin-top: 136px;
+}
+.review-slider {
+  scrollbar-width: none;
+}
+.review-slider::-webkit-scrollbar {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dental-marquee {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.form-field { display:block; width:100%; margin-top:.5rem; border:1px solid #DDE4EF; border-radius:14px; background:white; padding:13px 15px; font:inherit; font-weight:400; color:#292D34; }
+.form-field:focus { outline:2px solid #286CFD; outline-offset:2px; }
+.scroll-reveal { opacity:.2; translate:0 18px; transition:opacity .6s ease var(--reveal-delay,0ms),translate .6s cubic-bezier(.22,1,.36,1) var(--reveal-delay,0ms); }
+.scroll-reveal.is-visible, .scroll-reveal:focus-within { opacity:1; translate:0 0; }
+@media(prefers-reduced-motion:reduce){.scroll-reveal{opacity:1;translate:none;transition:none}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
